@@ -1,0 +1,127 @@
+<<<<<<< HEAD
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+=======
+.main-TrendingMovies {
+  color: #000;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  /* max-width: var(--maxPrimaryPageWidth); */
+  background-image: url('../assets/images/trending.svg');
+  background-position: 50% 200px;
+  background-repeat: no-repeat;
+}
+
+.card {
+  position: relative;
+}
+
+.rating {
+  position: absolute;
+  right: rem(12px);
+  pointer-events: none;
+}
+
+.title {
+  display: block;
+  margin-bottom: rem(5px);
+}
+
+.card-image {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  min-height: calc(150px * 1.5);
+  height: calc(150px * 1.5);
+  background: #dbdbdb;
+  overflow: hidden;
+}
+
+.trendingMovies-tab {
+  border: 1px solid black;
+  border-radius: 20px;
+}
+.card-Image {
+  width: 150px;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.RingProgress-percentage {
+  font-size: 2rem;
+  margin-top: -28px;
+  color: white;
+  argin-top: -28px;
+  background-color: black;
+  border-radius: 53%;
+}
+.ringProgress-percentage {
+  font-size: 7px;
+}
+
+.trending-progress {
+  margin-top: -28px;
+  color: white;
+  argin-top: -28px;
+  background-color: forestgreen;
+  border-radius: 53%;
+  text-align: center;
+}
+
+.trending-title {
+  text-decoration: none;
+  color: black;
+}
+
+.movies-list-link {
+  display: inline-block;
+  margin-left: 10px;
+}
+.moviesDetails-user-score {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-item: center;
+}
+
+.moviesDetail-progress {
+  display: inline-block;
+}
+.moviesDetails-box {
+  background-image: url('./');
+>>>>>>> 4dc7367 (Docker demo app)
+}

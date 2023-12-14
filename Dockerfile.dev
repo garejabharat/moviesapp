@@ -1,0 +1,35 @@
+FROM node:alpine
+
+<<<<<<< HEAD
+
+WORKDIR /app
+
+COPY ./package.json /app/
+
+RUN npm install
+
+COPY . /app
+
+CMD [ "npm","start" ]
+=======
+# Declaring env
+ENV NODE_ENV development
+
+# Setting up the work directory
+WORKDIR /deskshow
+
+# Installing dependencies
+COPY ./package*.json /deskshow
+
+
+
+RUN npm install --legacy-peer-deps
+
+# Copying all the files in our project
+COPY . .
+
+# COPY . /deskshow
+
+CMD [ "npm","run","dev" ]
+>>>>>>> 4dc7367 (Docker demo app)
+

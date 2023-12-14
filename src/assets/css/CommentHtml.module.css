@@ -1,0 +1,12 @@
+.comment {
+  padding: var(--mantine-spacing-lg) var(--mantine-spacing-xl);
+}
+
+.content {
+  & > p:last-child {
+    margin-bottom: 0;
+  }
+}
+.body {
+  font-size: 15px;
+}

@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+node_modules
+README.md
+
+=======
+
+node_modules
+npm-debug.log
+build
+.git
+*.md
+>>>>>>> 4dc7367 (Docker demo app)
+.gitignore
