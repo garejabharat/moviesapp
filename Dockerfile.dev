@@ -1,17 +1,5 @@
 FROM node:alpine
 
-<<<<<<< HEAD
-
-WORKDIR /app
-
-COPY ./package.json /app/
-
-RUN npm install
-
-COPY . /app
-
-CMD [ "npm","start" ]
-=======
 # Declaring env
 ENV NODE_ENV development
 
@@ -31,5 +19,4 @@ COPY . .
 # COPY . /deskshow
 
 CMD [ "npm","run","dev" ]
->>>>>>> 4dc7367 (Docker demo app)
 
