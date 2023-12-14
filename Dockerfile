@@ -1,37 +1,34 @@
-# node blog
-FROM node:alpine3.16 as nodework
+# Use the official Node.js runtime as the base image
+FROM node:alpine3.16 as build
 
+# Set the working directory in the container
 WORKDIR /myapp
 
-COPY package.json .
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-RUN  npm install 
+# Install dependencies
+RUN npm install  --legacy-peer-deps
+
+# Copy the entire application code to the container
+COPY . .
+
+# Build the React app for production
+RUN npm run build 
+
+# Use Nginx as the production server
+FROM nginx:1.23-alpine
 
 
-# local computer to copy file in container 
-COPY  . .
-
-# build the  project 
-RUN npm run build
-
-
-
-# nginx blog
-
-FROM  nginx:1.23-alpine
-
-#server content file in the 
 WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
 
-#remove default containt
-# and copy build folder directory
+# Copy the built React app to Nginx's web server directory
+COPY --from=build /myapp/build .
 
-RUN  rm -rf ./*
 
-#copy build inside content in the container
+# Expose port 80 for the Nginx server
+EXPOSE 80
 
-COPY --from=nodework /myapp/build .
-
-#nginx server use as forground 
-# daemon work alway as background
-ENTRYPOINT [ "nginx","-g","daemon off;"]
+# Start Nginx when the container runs
+ENTRYPOINT  ["nginx", "-g", "daemon off;"]

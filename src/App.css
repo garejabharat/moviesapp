@@ -46,7 +46,7 @@
   font-size: 2rem;
   margin-top: -28px;
   color: white;
-  argin-top: -28px;
+  margin-top: -28px;
   background-color: black;
   border-radius: 53%;
 }
@@ -57,10 +57,10 @@
 .trending-progress {
   margin-top: -28px;
   color: white;
-  argin-top: -28px;
+  margin-top: -28px;
   background-color: forestgreen;
   border-radius: 53%;
-  text-align: center;
+  text-aligns: center;
 }
 
 .trending-title {
@@ -82,6 +82,6 @@
 .moviesDetail-progress {
   display: inline-block;
 }
-.moviesDetails-box {
-  /* background-image: url('./'); */
-}
+/* .moviesDetails-box {
+  background-image: url('./');
+} */
