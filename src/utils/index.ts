@@ -147,3 +147,14 @@ export interface ReviewDetailsType {
   total_pages: number;
   total_results: number;
 }
+
+interface ChangeResult {
+  id: number;
+  adult: boolean;
+}
+export interface ChangeType {
+  results: ChangeResult[];
+  page: number;
+  total_pages: number;
+  total_results: number;
+}

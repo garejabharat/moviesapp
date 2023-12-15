@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
+  ChangeType,
   MovieCredits,
   MovieDetailType,
   MoviesKeywordsType,
@@ -17,7 +18,7 @@ import {
 
 //   return responseData;
 // }
-
+type PopularType = 'streaming' | 'TV' | 'Rent' | 'Theaters';
 export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({
@@ -85,6 +86,22 @@ export const movieApi = createApi({
       query(movie_id) {
         return {
           url: `movie/${movie_id}/reviews`,
+          method: 'GET',
+        };
+      },
+    }),
+    getChanges: builder.query<ChangeType, string>({
+      query(changes_name) {
+        return {
+          url: `person/${changes_name}?page=1`,
+          method: 'GET',
+        };
+      },
+    }),
+    getPopular: builder.query<ChangeType, PopularType>({
+      query(popular_name) {
+        return {
+          url: `movie/popular?language=en-US&page=1&region=${popular_name}`,
           method: 'GET',
         };
       },
