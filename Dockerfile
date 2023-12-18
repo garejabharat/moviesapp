@@ -1,13 +1,11 @@
 
-FROM node:18-alpine as BUILD_IMAGE
+FROM node:18-alpine AS BUILD_IMAGE
 
-WORKDIR /app/deskshow
+WORKDIR /app
 
 COPY package.json .
 
 RUN npm install  --legacy-peer-deps
-
-
 
 COPY . .
 
@@ -28,6 +26,7 @@ COPY vite.config.ts .
 RUN npm install typescript --legacy-peer-deps
 
 CMD ["npm","run","preview"]
+
 
 
 # FROM nginx:alpine
