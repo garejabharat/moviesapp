@@ -43,7 +43,6 @@ import {
 } from '@tabler/icons-react';
 import './moviesDetail.css';
 import { CastCreditCrew, Genre, TMDBReview } from '../utils';
-import PageDetails_Header from '../components/comman/PageDetails_Header';
 import { IconCirclesRelation } from '@tabler/icons-react';
 import TopBilledCarousel from '../components/comman/TopBilledCarousel';
 import classes from '../assets/css/CommentHtml.module.css';
@@ -53,12 +52,10 @@ const MovieDetails: React.FC = () => {
   const [reviewsFilteredData, setReviewsFilteredData] = useState<TMDBReview[] | null>(null);
   const { movieId } = useParams();
   const movieIdNumber = Number(movieId);
-
   const { data: movieDetailsData, isLoading: movieDetailsIsLoading } = useGetMoviesDetailsQuery(movieIdNumber);
   const { data: crewDetailsData, isLoading: crewDetailsIsLoading } = useGetMoviesCreditsQuery(movieIdNumber);
   const { data: moviesKeyWords } = useGetMoviesKeywordsQuery(movieIdNumber);
   const { data: moviesReviews } = useGetReviewsQuery(movieIdNumber);
-  // console.log(movieDetailsData);
 
   const directorOrWriterFilter = crewDetailsData?.crew.filter((Castjob: CastCreditCrew) => {
     return ['Director', 'Writing', 'Characters'].includes(Castjob.job);
@@ -88,7 +85,6 @@ const MovieDetails: React.FC = () => {
 
   return (
     <>
-      <PageDetails_Header />
       <BackgroundImage src={`${BASEURL}${movieDetailsData?.poster_path}`} className='paster_background_image'>
         <Container size='xl' py={10} mt='md'>
           <Grid gutter='xs'>
@@ -196,13 +192,7 @@ const MovieDetails: React.FC = () => {
           <Title order={1} ml={15} my={15} fz={25} fw={100}>
             Top Billed Cast
           </Title>
-          {/* <Flex wrap='wrap' gap='sm' justify='flex-start' align='flex-start' direction='row'>
 
-            <TopBilledCast />
-            <TopBilledCast />
-            <TopBilledCast />
-            <TopBilledCast />
-          </Flex> */}
           <TopBilledCarousel movieIdNumber={movieIdNumber} />
           <Box my={15}>
             <Title order={4}>Full Cast & Crew</Title>
@@ -218,7 +208,7 @@ const MovieDetails: React.FC = () => {
 
                 <Tabs.Panel value='reviews' my={10}>
                   {reviewsFilteredData?.map((reviewItem) => (
-                    <Paper withBorder radius='md' key={reviewItem.id} className={classes.comment}>
+                    <Paper withBorder radius='md' key={reviewItem.id}>
                       <Group>
                         <Avatar
                           src={`${BASEURL}${reviewItem.author_details.avatar_path}`}

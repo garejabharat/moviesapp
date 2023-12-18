@@ -85,3 +85,6 @@
 /* .moviesDetails-box {
   background-image: url('./');
 } */
+.custom-link {
+  text-decoration: none;
+}

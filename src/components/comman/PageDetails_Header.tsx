@@ -1,9 +1,9 @@
 import React from 'react';
 import { Menu, Button, Flex, rem } from '@mantine/core';
 import { IconChevronRight, IconCaretDownFilled } from '@tabler/icons-react';
-import { Link } from 'react-router-dom';
-
+import { Link, useParams } from 'react-router-dom';
 const PageDetails_Header: React.FC = () => {
+  const { movieId } = useParams();
   return (
     <>
       <Flex direction={{ base: 'column', sm: 'row' }} gap={{ base: 'sm', sm: 'lg' }} justify={{ sm: 'center' }}>
@@ -19,11 +19,15 @@ const PageDetails_Header: React.FC = () => {
           </Menu.Target>
 
           <Menu.Dropdown>
-            <Menu.Item>Main</Menu.Item>
-            <Link to={`/466420/title`}>
+            <Link to={`/${movieId}`} className='custom-link'>
+              <Menu.Item>Main</Menu.Item>
+            </Link>
+            <Link to={`/${movieId}/title`} className='custom-link'>
               <Menu.Item>Alternative Titles</Menu.Item>
             </Link>
-            <Menu.Item>Cast & Crew</Menu.Item>
+            <Link to={`/${movieId}/cast`} className='custom-link'>
+              <Menu.Item>Cast & Crew</Menu.Item>
+            </Link>
             <Menu.Item>Release Dates</Menu.Item>
             <Menu.Item>Translations</Menu.Item>
             <Menu.Item>watch Now</Menu.Item>

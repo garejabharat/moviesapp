@@ -158,3 +158,18 @@ export interface ChangeType {
   total_pages: number;
   total_results: number;
 }
+export interface AlternateTitles {
+  iso_3166_1: string;
+  title: string;
+  type: string;
+}
+export interface AlternateTitleType {
+  id: number;
+  titles: AlternateTitles[];
+}
+
+export interface CountryNameType {
+  'iso_3166_1': string;
+  'english_name': string;
+  'native_name': string;
+}

@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
+  AlternateTitleType,
   ChangeType,
+  CountryNameType,
   MovieCredits,
   MovieDetailType,
   MoviesKeywordsType,
@@ -33,7 +35,17 @@ export const movieApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['TRENDING_MOVIE'],
+  tagTypes: [
+    'TRENDING_MOVIE',
+    'MOVIE_DETAIL',
+    'MOVIE_CREDITS',
+    'MOVIE_KEYWORDS',
+    'PERSON_DETAILS',
+    'REVIEWS',
+    'MOVIE_CHANGES',
+    'POPULAR_MOVIES',
+    'ALTERNATE_TITLE',
+  ],
   endpoints: (builder) => ({
     getTrendingMovies: builder.query<moviesType, string>({
       query(data) {
@@ -42,69 +54,49 @@ export const movieApi = createApi({
           method: 'GET',
         };
       },
-      // providesTags: [{ type: 'TRENDING_MOVIE' }],
+      providesTags: [{ type: 'TRENDING_MOVIE' }],
       // transformResponse: (response, meta, arg) => {
       //   console.log(response);
       //   return response;
       // },
     }),
+
     getMoviesDetails: builder.query<MovieDetailType, number>({
-      query(moviesId) {
-        return {
-          url: `movie/${moviesId}?language=en-US`,
-          method: 'GET',
-        };
-      },
+      query: (moviesId) => `movie/${moviesId}?language=en-US`,
+      providesTags: [{ type: 'MOVIE_DETAIL' }],
     }),
 
     getMoviesCredits: builder.query<MovieCredits, number>({
-      query(moviesId) {
-        return {
-          url: `movie/${moviesId}/credits?language=en-US`,
-          method: 'GET',
-        };
-      },
-      // transformResponse: transformMoviesCreditsResponse,
+      query: (moviesId) => `movie/${moviesId}/credits?language=en-US`,
+      providesTags: [{ type: 'MOVIE_CREDITS' }],
     }),
     getMoviesKeywords: builder.query<MoviesKeywordsType, number>({
-      query(movie_id) {
-        return {
-          url: `movie/${movie_id}/keywords`,
-          method: 'GET',
-        };
-      },
+      query: (movie_id) => `movie/${movie_id}/keywords`,
+      providesTags: [{ type: 'MOVIE_KEYWORDS' }],
     }),
     getPersonDetails: builder.query<PersonDetails, number>({
-      query(personId) {
-        return {
-          url: `person/${personId}`,
-          method: 'GET',
-        };
-      },
+      query: (personId) => `person/${personId}`,
+      providesTags: [{ type: 'PERSON_DETAILS' }],
     }),
     getReviews: builder.query<ReviewDetailsType, number>({
-      query(movie_id) {
-        return {
-          url: `movie/${movie_id}/reviews`,
-          method: 'GET',
-        };
-      },
+      query: (movie_id) => `movie/${movie_id}/reviews`,
+      providesTags: [{ type: 'REVIEWS' }],
     }),
     getChanges: builder.query<ChangeType, string>({
-      query(changes_name) {
-        return {
-          url: `person/${changes_name}?page=1`,
-          method: 'GET',
-        };
-      },
+      query: (changes_name) => `person/${changes_name}?page=1`,
+      providesTags: [{ type: 'MOVIE_CHANGES' }],
     }),
     getPopular: builder.query<ChangeType, PopularType>({
-      query(popular_name) {
-        return {
-          url: `movie/popular?language=en-US&page=1&region=${popular_name}`,
-          method: 'GET',
-        };
-      },
+      query: (popular_name) => `movie/popular?language=en-US&page=1&region=${popular_name}`,
+      providesTags: [{ type: 'POPULAR_MOVIES' }],
+    }),
+    getAlternateTitle: builder.query<AlternateTitleType, number>({
+      query: (movie_id) => `movie/${movie_id}/alternative_titles`,
+      providesTags: [{ type: 'ALTERNATE_TITLE' }],
+    }),
+    countryName: builder.query<CountryNameType[], string>({
+      query: (language) => `configuration/countries?language=${language}`,
+      providesTags: [{ type: 'ALTERNATE_TITLE' }],
     }),
   }),
 });
@@ -116,4 +108,6 @@ export const {
   useGetMoviesKeywordsQuery,
   useGetPersonDetailsQuery,
   useGetReviewsQuery,
+  useGetAlternateTitleQuery,
+  useCountryNameQuery,
 } = movieApi;
