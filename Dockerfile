@@ -1,5 +1,5 @@
 
-FROM node:18-alpine AS BUILD_IMAGE
+FROM node:latest AS BUILD_IMAGE
 
 WORKDIR /app
 
