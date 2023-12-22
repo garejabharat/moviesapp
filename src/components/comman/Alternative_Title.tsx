@@ -24,7 +24,7 @@ const Alternative_Title: React.FC = () => {
                   direction={{ base: 'column', sm: 'row' }}
                 >
                   <Title order={3} p={15}>
-                    Alternate Tile{' '}
+                    Alternate Title{' '}
                   </Title>
                   <Text>{movieAlternateData?.titles.length}</Text>
                 </Flex>
