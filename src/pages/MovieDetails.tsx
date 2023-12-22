@@ -64,7 +64,7 @@ const MovieDetails: React.FC = () => {
   useEffect(() => {
     if (moviesReviews) {
       const reviewsFiltered = [...moviesReviews.results];
-      console.log(reviewsFiltered.slice(0, 1));
+      
       setReviewsFilteredData(reviewsFiltered.slice(0, 1));
     }
   }, [moviesReviews]);
