@@ -13,19 +13,19 @@ RUN npm run build
 
 
 # image for production
-FROM node:18-alpine as PRODUCTION_IMAGE
-WORKDIR /app/deskshow
+# FROM node:18-alpine as PRODUCTION_IMAGE
+# WORKDIR /app/deskshow
 
-COPY --from=BUILD_IMAGE  /app/deskshow/dist/ /app/deskshow/dist/
+# COPY --from=BUILD_IMAGE  /app/deskshow/dist/ /app/deskshow/dist/
 
-# EXPOSE 8080
+# # EXPOSE 8080
 
-COPY package.json .
+# COPY package.json .
 
-COPY vite.config.ts .
-RUN npm install typescript --legacy-peer-deps
+# COPY vite.config.ts .
+# RUN npm install typescript --legacy-peer-deps
 
-CMD ["npm","run","preview"]
+# CMD ["npm","run","preview"]
 
 
 
